@@ -19,7 +19,7 @@ jobs:
 
             - id: install-dependencies
               name: Установка зависимостей
-              run: sudo apt-get install --yes curl jq # NOTE: jq необходим для обработки JSON
+              run: sudo apt-get install --yes curl coreutils jq # NOTE: jq необходим для обработки JSON
 
             - id: authenticate
               name: Аутентификация в MSAPI

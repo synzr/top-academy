@@ -26,4 +26,4 @@ curl --silent \
     -H "Origin: $ORIGIN" \
     -H "Referer: $ORIGIN/" \
     -d "$REQUEST_BODY" \
-    https://msapi.top-academy.ru/api/v2/auth/login | jq -r ".access_token"
+    https://msapi.top-academy.ru/api/v2/auth/login | jq -r ".access_token" | tr -d '\n'
