@@ -26,4 +26,4 @@ jobs:
               env:
                   CREDENTIALS_USERNAME: ${{ secrets.CREDENTIALS_USERNAME }}
                   CREDENTIALS_PASSWORD: ${{ secrets.CREDENTIALS_PASSWORD }}
-              run: bash ./utils/authenticate.sh > "$GITHUB_OUTPUT"
+              run: bash ./utils/authenticate.sh > $GITHUB_OUTPUT
