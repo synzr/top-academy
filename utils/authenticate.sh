@@ -17,7 +17,7 @@ cat << EOF
 EOF
 )
 
-curl -v \
+curl \
   -X POST \
   -H "User-Agent: $USER_AGENT" \
   -H "Accept: application/json" \
