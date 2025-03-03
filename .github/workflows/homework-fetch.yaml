@@ -1,0 +1,29 @@
+name: Выгрузка домашних задания в репозиторий
+
+on:
+    schedule:
+        - cron: "0 * * * *" # NOTE: Каждый час
+
+    workflow_dispatch:
+
+jobs:
+    authenticate:
+        name: Аутентификация в журнале
+        runs-on: ubuntu-latest
+        outputs:
+            access_token: ${{ steps.authenticate.outputs.access_token }}
+        steps:
+            - id: checkout
+              name: Получение файлов в репозиторий
+              uses: actions/checkout@v4
+
+            - id: install-dependencies
+              name: Установка зависимостей
+              run: apt-get install --yes curl jq # NOTE: jq необходим для обработки JSON
+
+            - id: authenticate
+              name: Аутентификация в MSAPI
+              env:
+                  CREDENTIALS_USERNAME: ${{ secrets.CREDENTIALS_USERNAME }}
+                  CREDENTIALS_PASSWORD: ${{ secrets.CREDENTIALS_PASSWORD }}
+              run: ./utils/authenticate.sh > "$GITHUB_OUTPUT"
